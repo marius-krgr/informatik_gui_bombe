@@ -1,0 +1,82 @@
+Schreiben sie eine Methode, die den Median eines Vorsortierten feldes zurückgibt.
+
+public static void ausgeben(int[] a, int i, int j, int hilf) {
+    System.out.println("i: " + i + "   j: " + j + "   hilf: " + hilf);
+    for (int k = 0; k < a.length; k++) {
+        System.out.print(a[k] + " ");
+    }
+    System.out.println("\n\n");
+}
+
+//Median
+public static int median(int a[]) {
+    int median;
+    if (a.length % 2 == 0){
+        int b = a.length / 2;
+        int c = b - 1;
+        median = (a[b]+a[c])/2;
+    } else {
+        median = a[a.length / 2];
+    }
+    return median;
+}
+
+public static int[] ungeradesFeld() {
+    int[] a = new int[99];
+    int hilf = 0;
+    for(int i = 0; i < a.length; i++){
+        if(hilf == 0){
+            a[i] = i + 1;
+            hilf ++;
+        } else {
+            a[i] = i + 2;
+            hilf --;
+        }
+    }
+}
+
+public static int[] wachsendesFeld(int anzahl) {
+    int[] a = new int[anzahl];
+    for (int i = 0; i < a.length; i++){
+        if(i == 0){
+            a[i] = (int) (Math.random() * 100);
+        } else {
+            a[i] = (int) ((Math.random() * (900) + 100) + a[i-1]);
+        }
+    }
+    return a;
+}
+
+public static int findeKleinere(int[] source, int[] dest, int t){
+    int zaehler = 0;
+    for(int i = 0; i < source.length; i++){
+        if (source[i] < t){
+            dest[zaehler] = source[i];
+            zaehler ++;
+        }
+    }
+    return zaehler;
+}
+
+public static int findeKleinereSortiert(int[] source, int[] dest, int t){
+    source = magicSort(source);
+
+    int zaehler = 0;
+    int i = 0;
+    while (source[i] < t){
+        dest[zaehler] = source[i];
+        zaehler ++;
+        i ++;
+    }
+    return zaehler;
+}
+
+public static int findeDoppelte(int[] a){
+    int doppelte = 0;
+    for (int = 0; int < a.length; i++){
+        if (a[i] == a[i+1]){
+            doppelte ++;
+        }
+    }
+    return doppelte;
+}
